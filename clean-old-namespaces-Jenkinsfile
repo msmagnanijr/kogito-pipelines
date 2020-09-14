@@ -1,7 +1,7 @@
 pipeline{
     agent {label 'kogito-cloud && !master'}
     triggers {
-        cron('@midnight')
+        cron('*/5 * * * *')
     }
     environment {
         OPENSHIFT_API = credentials("OPENSHIFT_API")
@@ -11,7 +11,7 @@ pipeline{
         stage('Clean Old Namespaces'){
             steps{
                 loginOpenshift()
-                sh "tools/clean-old-namespaces.sh" 
+                sh "tools/clean-up-stucked.sh" 
             }
         }
     }
