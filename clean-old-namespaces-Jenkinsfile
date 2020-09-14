@@ -1,5 +1,5 @@
 pipeline{
-    agent {label 'kogito-cloud && !master'}
+    agent {label 'operator-slave'}
     triggers {
         cron('*/5 * * * *')
     }
